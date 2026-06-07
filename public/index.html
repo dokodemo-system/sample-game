@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gobblet-like Online Game</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <main class="container">
+      <h1>ゴブレット風オンライン対戦</h1>
+
+      <section id="lobbySection" class="panel">
+        <h2>マッチング</h2>
+        <div class="row">
+          <button id="createRoomBtn">新しく部屋を作る（ホスト）</button>
+        </div>
+        <div class="row join-row">
+          <input id="roomIdInput" type="text" maxlength="5" placeholder="5桁ルームID" />
+          <button id="joinRoomBtn">部屋に入る（ゲスト）</button>
+        </div>
+        <p id="roomInfo">部屋未作成</p>
+        <p id="waitingText" class="muted hidden">対戦相手を待っています...</p>
+      </section>
+
+      <section id="gameSection" class="panel hidden">
+        <div class="status-bar">
+          <p id="statusText">準備中...</p>
+          <p id="connectionText">接続状態: -</p>
+        </div>
+        <div id="board" class="board"></div>
+        <div class="hands">
+          <div>
+            <h3>自分の持ち駒</h3>
+            <div id="myHand" class="hand-list"></div>
+          </div>
+          <div>
+            <h3>相手の持ち駒</h3>
+            <div id="opponentHand" class="hand-list"></div>
+          </div>
+        </div>
+        <p id="selectedInfo" class="muted">選択中のコマ: なし</p>
+        <p id="messageText" class="message"></p>
+      </section>
+    </main>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="./client.js"></script>
+  </body>
+</html>
